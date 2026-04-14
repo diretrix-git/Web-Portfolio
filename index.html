@@ -1,0 +1,729 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio — Krish Maharjan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav id="navbar">
+      <a href="#" class="nav-logo">KM.</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#resume">Résumé</a>
+        <a href="#contact">Contact</a>
+        <span id="mode-badge">☀ Day</span>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#about" class="mob-link">About</a>
+      <a href="#skills" class="mob-link">Skills</a>
+      <a href="#projects" class="mob-link">Projects</a>
+      <a href="#resume" class="mob-link">Résumé</a>
+      <a href="#contact" class="mob-link">Contact</a>
+      <span id="mode-badge-mob">☀ Day</span>
+    </div>
+
+    <!-- HERO -->
+    <section id="hero">
+      <div class="hero-left">
+        <p class="hero-eyebrow">Hello, World — I'm</p>
+        <h1 class="hero-name">Krish<br /><em>Maharjan</em></h1>
+        <p class="hero-tagline">
+          Full-Stack Developer & Creative Coder building meaningful digital
+          experiences from Kathmandu, Nepal 🇳🇵
+        </p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary">View My Work ↓</a>
+          <a href="#contact" class="btn btn-outline">Get In Touch</a>
+        </div>
+      </div>
+
+      <!-- Decorative code window illustration -->
+      <div class="hero-visual" aria-hidden="true">
+        <div class="code-window">
+          <div class="code-window-bar">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+            <span class="code-window-title">krish.js</span>
+          </div>
+          <div class="code-window-body">
+            <div class="code-line"><span class="ck">const</span> <span class="cv">dev</span> <span class="co">=</span> <span class="cs">{</span></div>
+            <div class="code-line pl1"><span class="ck">name</span><span class="co">:</span> <span class="cstr">"Krish Maharjan"</span><span class="co">,</span></div>
+            <div class="code-line pl1"><span class="ck">role</span><span class="co">:</span> <span class="cstr">"Full-Stack Dev"</span><span class="co">,</span></div>
+            <div class="code-line pl1"><span class="ck">location</span><span class="co">:</span> <span class="cstr">"Kathmandu 🇳🇵"</span><span class="co">,</span></div>
+            <div class="code-line pl1"><span class="ck">stack</span><span class="co">:</span> <span class="cs">[</span><span class="cstr">"React"</span><span class="co">,</span> <span class="cstr">"Node"</span><span class="co">,</span> <span class="cstr">"Python"</span><span class="cs">]</span><span class="co">,</span></div>
+            <div class="code-line pl1"><span class="ck">available</span><span class="co">:</span> <span class="cbool">true</span><span class="co">,</span></div>
+            <div class="code-line pl1"><span class="cfn">greet</span><span class="co">()</span> <span class="cs">{</span></div>
+            <div class="code-line pl2"><span class="ck">return</span> <span class="cstr">"Let's build something"</span><span class="co">;</span></div>
+            <div class="code-line pl1"><span class="cs">}</span></div>
+            <div class="code-line"><span class="cs">};</span></div>
+            <div class="code-line mt">&nbsp;</div>
+            <div class="code-line"><span class="cv">dev</span><span class="co">.</span><span class="cfn">greet</span><span class="co">();</span> <span class="ccomment">// ✨</span></div>
+            <div class="code-cursor"></div>
+          </div>
+        </div>
+        <!-- floating badges -->
+        <div class="hero-badge badge-react">⚛️ React</div>
+        <div class="hero-badge badge-node">🟢 Node.js</div>
+        <div class="hero-badge badge-py">🐍 Python</div>
+      </div>
+
+      <div class="scroll-hint">
+        <span class="scroll-line"></span>
+        <span>Scroll</span>
+      </div>
+    </section>
+
+    <!-- CLOCKS -->
+    <div id="clocks">
+      <div class="clock-card">
+        <div class="clock-flag">🇳🇵</div>
+        <div class="clock-label">Nepal Standard Time</div>
+        <div class="clock-digits">
+          <span class="clock-seg" id="np-h">00</span
+          ><span class="clock-colon">:</span
+          ><span class="clock-seg" id="np-m">00</span
+          ><span class="clock-colon">:</span
+          ><span class="clock-seg" id="np-s">00</span>
+        </div>
+        <div class="clock-tz">UTC +5:45 · NPT</div>
+        <div class="clock-date" id="nepal-date">—</div>
+      </div>
+      <div class="clock-card">
+        <div class="clock-flag">🌍</div>
+        <div class="clock-label">Your Local Time</div>
+        <div class="clock-digits">
+          <span class="clock-seg" id="lc-h">00</span
+          ><span class="clock-colon">:</span
+          ><span class="clock-seg" id="lc-m">00</span
+          ><span class="clock-colon">:</span
+          ><span class="clock-seg" id="lc-s">00</span>
+        </div>
+        <div class="clock-tz" id="local-tz">Detecting…</div>
+        <div class="clock-date" id="local-date">—</div>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="about-img-wrap" data-reveal>
+        <div class="about-avatar">
+          <svg viewBox="0 0 320 400" xmlns="http://www.w3.org/2000/svg" class="avatar-svg">
+            <!-- background -->
+            <rect width="320" height="400" rx="12" fill="var(--bg2)"/>
+            <!-- subtle grid -->
+            <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+              <path d="M 20 0 L 0 0 0 20" fill="none" stroke="var(--border)" stroke-width="0.5"/>
+            </pattern>
+            <rect width="320" height="400" rx="12" fill="url(#grid)"/>
+            <!-- body / shirt -->
+            <ellipse cx="160" cy="370" rx="90" ry="60" fill="var(--accent)" opacity="0.9"/>
+            <!-- neck -->
+            <rect x="145" y="255" width="30" height="40" rx="8" fill="#f5c9a0"/>
+            <!-- head -->
+            <ellipse cx="160" cy="220" rx="68" ry="75" fill="#f5c9a0"/>
+            <!-- hair -->
+            <ellipse cx="160" cy="158" rx="68" ry="38" fill="#2c1a0e"/>
+            <rect x="92" y="158" width="18" height="50" rx="9" fill="#2c1a0e"/>
+            <rect x="210" y="158" width="18" height="50" rx="9" fill="#2c1a0e"/>
+            <!-- ears -->
+            <ellipse cx="92" cy="222" rx="12" ry="16" fill="#f5c9a0"/>
+            <ellipse cx="228" cy="222" rx="12" ry="16" fill="#f5c9a0"/>
+            <!-- eyes -->
+            <ellipse cx="136" cy="215" rx="10" ry="11" fill="#fff"/>
+            <ellipse cx="184" cy="215" rx="10" ry="11" fill="#fff"/>
+            <circle cx="138" cy="216" r="6" fill="#2c1a0e"/>
+            <circle cx="186" cy="216" r="6" fill="#2c1a0e"/>
+            <circle cx="140" cy="214" r="2" fill="#fff"/>
+            <circle cx="188" cy="214" r="2" fill="#fff"/>
+            <!-- eyebrows -->
+            <path d="M124 200 Q136 194 148 200" stroke="#2c1a0e" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M172 200 Q184 194 196 200" stroke="#2c1a0e" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <!-- nose -->
+            <path d="M156 225 Q152 238 158 242 Q162 244 166 242 Q172 238 164 225" fill="#e8b48a" stroke="none"/>
+            <!-- smile -->
+            <path d="M142 258 Q160 272 178 258" stroke="#c07040" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <!-- laptop -->
+            <rect x="60" y="310" width="200" height="6" rx="3" fill="#1a1814" opacity="0.6"/>
+            <rect x="75" y="270" width="170" height="42" rx="6" fill="#1a1814" opacity="0.7"/>
+            <rect x="80" y="274" width="160" height="34" rx="4" fill="#0f0e0c"/>
+            <!-- code on laptop screen -->
+            <rect x="86" y="279" width="60" height="3" rx="1.5" fill="var(--accent)" opacity="0.9"/>
+            <rect x="86" y="285" width="90" height="3" rx="1.5" fill="#4ec9b0" opacity="0.8"/>
+            <rect x="86" y="291" width="75" height="3" rx="1.5" fill="#9cdcfe" opacity="0.8"/>
+            <rect x="86" y="297" width="50" height="3" rx="1.5" fill="#ce9178" opacity="0.8"/>
+            <rect x="152" y="279" width="40" height="3" rx="1.5" fill="#569cd6" opacity="0.7"/>
+            <rect x="152" y="285" width="30" height="3" rx="1.5" fill="#dcdcaa" opacity="0.7"/>
+          </svg>
+        </div>
+      </div>
+      <div class="about-text" data-reveal>
+        <div class="section-line"></div>
+        <h2 class="section-title">About Me</h2>
+        <p class="section-sub">A bit about who I am and what drives me</p>
+        <p>
+          I'm Krish Maharjan, a full-stack developer from Lalitpur, Kathmandu. I
+          have a deep passion for crafting clean, performant web applications
+          that balance technical rigour with genuine usability. I love turning
+          complex problems into elegant solutions.
+        </p>
+        <p>
+          I graduated with a BSc in Computer Science from Tribhuvan University
+          and have been building things for the web ever since — from small
+          freelance gigs to production apps used by thousands. When I'm not
+          coding you'll find me trekking around the Kathmandu Valley, listening
+          to lo-fi, or experimenting with new recipes.
+        </p>
+        <div class="about-stats">
+          <div class="stat-item">
+            <div class="stat-num">3+</div>
+            <div class="stat-desc">Years Experience</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">25+</div>
+            <div class="stat-desc">Projects Shipped</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">12+</div>
+            <div class="stat-desc">Happy Clients</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">∞</div>
+            <div class="stat-desc">Cups of Chiya ☕</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div data-reveal>
+        <div class="section-line"></div>
+        <h2 class="section-title">Skills & Tools</h2>
+        <p class="section-sub">Technologies I reach for every day</p>
+        <div class="skills-categories">
+          <div>
+            <div class="skill-cat-title">Frontend</div>
+            <div class="skills-row">
+              <span class="skill-chip">⚛️ React</span>
+              <span class="skill-chip">🔷 TypeScript</span>
+              <span class="skill-chip">⚡ Next.js</span>
+              <span class="skill-chip">🎨 Tailwind CSS</span>
+              <span class="skill-chip">🟨 JavaScript ES2024</span>
+              <span class="skill-chip">✨ GSAP</span>
+            </div>
+          </div>
+          <div>
+            <div class="skill-cat-title">Backend</div>
+            <div class="skills-row">
+              <span class="skill-chip">🟢 Node.js</span>
+              <span class="skill-chip">🚂 Express</span>
+              <span class="skill-chip">🐍 Python</span>
+              <span class="skill-chip">🌶️ Django REST</span>
+              <span class="skill-chip">🗄️ PostgreSQL</span>
+              <span class="skill-chip">🍃 MongoDB</span>
+            </div>
+          </div>
+          <div>
+            <div class="skill-cat-title">DevOps & Tools</div>
+            <div class="skills-row">
+              <span class="skill-chip">🐋 Docker</span>
+              <span class="skill-chip">☁️ AWS</span>
+              <span class="skill-chip">📦 Git & GitHub</span>
+              <span class="skill-chip">🎨 Figma</span>
+              <span class="skill-chip">🔁 CI/CD</span>
+              <span class="skill-chip">🐧 Linux</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div data-reveal>
+        <div class="section-line"></div>
+        <h2 class="section-title">Selected Work</h2>
+        <p class="section-sub">Things I've designed, built, and shipped</p>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div
+            class="project-img"
+            style="background: linear-gradient(135deg, #fef3eb, #fde0c8)"
+          >
+            🛍️
+          </div>
+          <div class="project-body">
+            <div class="project-tag">Full Stack · Next.js · Stripe</div>
+            <div class="project-title">SajiloBazar</div>
+            <p class="project-desc">
+              A Nepali e-commerce platform with real-time inventory, Khalti &
+              Stripe payment gateways, an admin dashboard, and bilingual (Nepali
+              / English) support.
+            </p>
+            <div class="project-links">
+              <a href="#" class="project-link">↗ Live Demo</a>
+              <a href="#" class="project-link">⌥ GitHub</a>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div
+            class="project-img"
+            style="background: linear-gradient(135deg, #eaf4fb, #c8e6f7)"
+          >
+            📊
+          </div>
+          <div class="project-body">
+            <div class="project-tag">Data Viz · D3.js · WebSocket</div>
+            <div class="project-title">NepSE Pulse</div>
+            <p class="project-desc">
+              Real-time Nepal Stock Exchange tracker with candlestick charts,
+              portfolio simulation, and push notifications — powered by a Python
+              WebSocket server.
+            </p>
+            <div class="project-links">
+              <a href="#" class="project-link">↗ Live Demo</a>
+              <a href="#" class="project-link">⌥ GitHub</a>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div
+            class="project-img"
+            style="background: linear-gradient(135deg, #f0f4ff, #d5e0ff)"
+          >
+            🤖
+          </div>
+          <div class="project-body">
+            <div class="project-tag">AI · Python · RAG · LangChain</div>
+            <div class="project-title">DocuMind</div>
+            <p class="project-desc">
+              Chat with any PDF using a custom RAG pipeline. Built with
+              LangChain, FastAPI, pgvector, and a slick React front-end with
+              streaming responses.
+            </p>
+            <div class="project-links">
+              <a href="#" class="project-link">↗ Live Demo</a>
+              <a href="#" class="project-link">⌥ GitHub</a>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div
+            class="project-img"
+            style="background: linear-gradient(135deg, #f0fff4, #c8f0d4)"
+          >
+            🗺️
+          </div>
+          <div class="project-body">
+            <div class="project-tag">Mobile · React Native · Maps</div>
+            <div class="project-title">Yatra — Trek Guide</div>
+            <p class="project-desc">
+              Cross-platform mobile app with offline trekking maps, elevation
+              profiles, real-time weather alerts, and community trip logs for
+              Nepali hikers.
+            </p>
+            <div class="project-links">
+              <a href="#" class="project-link">↗ App Store</a>
+              <a href="#" class="project-link">⌥ GitHub</a>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div
+            class="project-img"
+            style="background: linear-gradient(135deg, #fff8e1, #ffe082)"
+          >
+            📋
+          </div>
+          <div class="project-body">
+            <div class="project-tag">SaaS · Node.js · PostgreSQL</div>
+            <div class="project-title">TaskFlow</div>
+            <p class="project-desc">
+              Minimal yet powerful project management tool with kanban boards,
+              time tracking, team workspaces, and Slack integration — built for
+              small agencies.
+            </p>
+            <div class="project-links">
+              <a href="#" class="project-link">↗ Live Demo</a>
+              <a href="#" class="project-link">⌥ GitHub</a>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div
+            class="project-img"
+            style="background: linear-gradient(135deg, #fce4ec, #f8bbd0)"
+          >
+            🎵
+          </div>
+          <div class="project-body">
+            <div class="project-tag">Web Audio · Vanilla JS</div>
+            <div class="project-title">LoFi Studio</div>
+            <p class="project-desc">
+              In-browser lo-fi music mixer with layerable ambient sounds, a beat
+              sequencer, and a visual mood board. Zero frameworks — pure Web
+              Audio API magic.
+            </p>
+            <div class="project-links">
+              <a href="#" class="project-link">↗ Live Demo</a>
+              <a href="#" class="project-link">⌥ GitHub</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESUME -->
+    <section id="resume">
+      <div data-reveal>
+        <div class="section-line"></div>
+        <h2 class="section-title">Résumé</h2>
+        <p class="section-sub">My professional background at a glance</p>
+      </div>
+      <div class="resume-container" data-reveal>
+        <div class="resume-toolbar">
+          <span>📄 krish_maharjan_resume.pdf</span>
+          <a
+            href="#"
+            class="btn btn-outline"
+            style="font-size: 0.8rem; padding: 0.4rem 1rem"
+            >↓ Download PDF</a
+          >
+        </div>
+        <div class="resume-display">
+          <div class="r-head">
+            <h1>Krish Maharjan</h1>
+            <p>
+              Full-Stack Developer · UI/UX Enthusiast · Open-Source Contributor
+            </p>
+            <div class="r-contacts">
+              <span>📧 krish.maharjan@gmail.com</span>
+              <span>📞 +977-984-1234567</span>
+              <span>📍 Lalitpur, Kathmandu</span>
+              <span>🌐 github.com/krishmaharjan</span>
+            </div>
+          </div>
+
+          <div class="r-sec">
+            <div class="r-sec-title">Professional Summary</div>
+            <p style="font-size: 0.88rem; color: var(--fg2); line-height: 1.7">
+              Creative and detail-oriented full-stack developer with 3+ years of
+              experience designing and shipping production web applications.
+              Comfortable across the entire stack — from pixel-perfect React UIs
+              to scalable REST APIs and cloud deployments. Passionate about
+              performance, accessibility, and writing code that other developers
+              enjoy reading.
+            </p>
+          </div>
+
+          <div class="r-sec">
+            <div class="r-sec-title">Work Experience</div>
+            <div class="r-entry">
+              <div class="r-entry-head">
+                <div>
+                  <div class="r-title">Senior Front-End Developer</div>
+                  <div class="r-company">
+                    Cloudbyte Technologies Pvt. Ltd. — Kathmandu
+                  </div>
+                </div>
+                <div class="r-date">Jan 2023 – Present</div>
+              </div>
+              <ul>
+                <li>
+                  Led the React migration of a legacy jQuery dashboard, reducing
+                  bundle size by 58%
+                </li>
+                <li>
+                  Architected a shared design-system library used across 4
+                  internal products
+                </li>
+                <li>
+                  Mentored 3 junior developers through pair programming and
+                  weekly code reviews
+                </li>
+                <li>
+                  Integrated WebSocket-based real-time notifications, improving
+                  user engagement by 34%
+                </li>
+              </ul>
+            </div>
+            <div class="r-entry">
+              <div class="r-entry-head">
+                <div>
+                  <div class="r-title">Full-Stack Developer</div>
+                  <div class="r-company">
+                    Nirmal Software Solutions — Lalitpur
+                  </div>
+                </div>
+                <div class="r-date">Jun 2021 – Dec 2022</div>
+              </div>
+              <ul>
+                <li>
+                  Built and maintained 6 client projects using React, Node.js,
+                  and PostgreSQL
+                </li>
+                <li>
+                  Designed a multi-tenant SaaS billing system with Stripe
+                  webhooks and invoice generation
+                </li>
+                <li>
+                  Wrote automated test suites (Jest + Cypress) achieving 85%
+                  code coverage
+                </li>
+              </ul>
+            </div>
+            <div class="r-entry">
+              <div class="r-entry-head">
+                <div>
+                  <div class="r-title">Web Development Intern</div>
+                  <div class="r-company">InnovateTech Nepal — Remote</div>
+                </div>
+                <div class="r-date">Jan 2021 – May 2021</div>
+              </div>
+              <ul>
+                <li>
+                  Developed landing pages and CMS integrations for 3 startup
+                  clients
+                </li>
+                <li>
+                  Reduced average page load time from 4.2s to 1.8s through
+                  lazy-loading and CDN caching
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="r-sec">
+            <div class="r-sec-title">Education</div>
+            <div class="r-entry">
+              <div class="r-entry-head">
+                <div>
+                  <div class="r-title">
+                    BSc Computer Science & Information Technology
+                  </div>
+                  <div class="r-company">
+                    Tribhuvan University — Kirtipur, Kathmandu
+                  </div>
+                </div>
+                <div class="r-date">2017 – 2021</div>
+              </div>
+              <ul>
+                <li>
+                  Final Year Project: Nepali Sign Language Recognition using CNN
+                  (95.2% accuracy)
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="r-sec">
+            <div class="r-sec-title">Certifications</div>
+            <div class="r-entry">
+              <ul>
+                <li>AWS Certified Developer – Associate (2023)</li>
+                <li>
+                  Meta Front-End Developer Professional Certificate — Coursera
+                  (2022)
+                </li>
+                <li>Google IT Automation with Python — Coursera (2021)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="r-sec">
+            <div class="r-sec-title">Technical Skills</div>
+            <div class="r-tags">
+              <span class="r-tag">JavaScript</span
+              ><span class="r-tag">TypeScript</span>
+              <span class="r-tag">React</span><span class="r-tag">Next.js</span>
+              <span class="r-tag">Node.js</span
+              ><span class="r-tag">Python</span>
+              <span class="r-tag">Django REST</span
+              ><span class="r-tag">PostgreSQL</span>
+              <span class="r-tag">MongoDB</span
+              ><span class="r-tag">Docker</span> <span class="r-tag">AWS</span
+              ><span class="r-tag">Git</span> <span class="r-tag">Figma</span
+              ><span class="r-tag">Tailwind CSS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div data-reveal>
+        <div class="section-line"></div>
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-sub">
+          Have a project in mind? I'd love to hear about it.
+        </p>
+      </div>
+      <div class="contact-wrap">
+        <div class="contact-info-side" data-reveal>
+          <h3>Let's work together</h3>
+          <p>
+            Whether you have a full project brief or just a rough idea, I'm
+            always open to a good conversation. Drop me a message and I'll get
+            back to you within 24 hours.
+          </p>
+          <div class="contact-item">
+            <span class="contact-item-icon">📧</span>
+            <!-- clicking opens Gmail compose with your address pre-filled -->
+            <a
+              href="https://mail.google.com/mail/?view=cm&to=krish.maharjan@gmail.com"
+              target="_blank"
+              rel="noopener"
+            >
+              krish.maharjan@gmail.com
+            </a>
+          </div>
+          <div class="contact-item">
+            <span class="contact-item-icon">📞</span>
+            <span>+977-984-1234567</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-item-icon">📍</span>
+            <span>Lalitpur, Kathmandu, Nepal 🇳🇵</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-item-icon">⏰</span>
+            <span>NPT · UTC +5:45 — Available Mon–Sat</span>
+          </div>
+        </div>
+
+        <div data-reveal>
+          <!--
+        ╔══════════════════════════════════════════════════╗
+        ║  EMAILJS SETUP — 3 steps:                        ║
+        ║  1. Sign up at https://www.emailjs.com (free)    ║
+        ║  2. Create a Gmail service & email template      ║
+        ║     Template variables used here:                ║
+        ║       {{from_firstname}}, {{from_lastname}}      ║
+        ║       {{from_email}}, {{subject}}, {{message}}   ║
+        ║  3. Replace the 3 constants below in <script>    ║
+        ╚══════════════════════════════════════════════════╝
+      -->
+          <!-- status shown ABOVE the form fields -->
+          <div id="form-status"></div>
+
+          <form class="contact-form" id="contact-form" onsubmit="return false;">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname">First Name *</label>
+                <input
+                  type="text"
+                  id="fname"
+                  name="from_firstname"
+                  placeholder="Hari"
+                />
+                <span class="field-error" id="err-fname"
+                  >Please enter your first name.</span
+                >
+              </div>
+              <div class="form-group">
+                <label for="lname">Last Name</label>
+                <input
+                  type="text"
+                  id="lname"
+                  name="from_lastname"
+                  placeholder="Shrestha"
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="cemail">Email Address *</label>
+              <input
+                type="email"
+                id="cemail"
+                name="from_email"
+                placeholder="hari@example.com"
+              />
+              <span class="field-error" id="err-email"
+                >Please enter a valid email address.</span
+              >
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                placeholder="Project Inquiry"
+              />
+            </div>
+            <div class="form-group">
+              <label for="message">Message *</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                placeholder="Tell me about your project…"
+              ></textarea>
+              <span class="field-error" id="err-message"
+                >Please write a message.</span
+              >
+            </div>
+            <button
+              type="button"
+              class="btn btn-primary"
+              id="send-btn"
+              style="width: 100%; justify-content: center; margin-top: 0.2rem"
+            >
+              Send Message →
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div>
+        <span
+          style="
+            font-family: &quot;Playfair Display&quot;, serif;
+            font-size: 1.1rem;
+            color: var(--accent);
+          "
+          >Krish Maharjan</span
+        >
+        <span style="display: block; margin-top: 0.2rem"
+          >Crafted with ❤️ from Kathmandu, Nepal 🇳🇵</span
+        >
+      </div>
+      <div class="footer-socials">
+        <a href="https://github.com/" target="_blank" title="GitHub">GH</a>
+        <a href="https://linkedin.com/" target="_blank" title="LinkedIn">in</a>
+        <a href="https://twitter.com/" target="_blank" title="Twitter">𝕏</a>
+      </div>
+      <div>© 2025 Krish Maharjan. All rights reserved.</div>
+    </footer>
+
+    <!-- BACK TO TOP -->
+    <button id="back-top" title="Back to top">↑</button>
+    <script src="script.js"></script>
+  </body>
+</html>
