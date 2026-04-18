@@ -1,316 +1,301 @@
-/* ══════════════════════════════════════════════
-   EMAILJS CONFIG — replace with your real values
-══════════════════════════════════════════════ */
-const EJ_PUBLIC_KEY = "jaEu-NvWgmhTrCtnP"; // EmailJS → Account → Public Key
-const EJ_SERVICE_ID = "service_b8b900o"; // EmailJS → Email Services → Service ID
-const EJ_TEMPLATE_ID = "template_pny925g"; // EmailJS → Email Templates → Template ID
-emailjs.init({ publicKey: EJ_PUBLIC_KEY });
+// main.js — Krish Maharjan Portfolio
 
-/* ── GSAP ── */
-gsap.registerPlugin(ScrollTrigger);
+// ─── Data ────────────────────────────────────────────────────────────────────
 
-/* ── DARK / LIGHT MODE ── */
-function applyMode() {
-  const h = new Date().getHours();
-  const dark = h >= 18 || h < 6;
-  document.body.classList.toggle("dark", dark);
-  const label = dark ? "☾ Night" : "☀ Day";
-  document.getElementById("mode-badge").textContent = label;
-  const mob = document.getElementById("mode-badge-mob");
-  if (mob) mob.textContent = label;
-}
-applyMode();
-setInterval(applyMode, 60000);
+const SKILLS = [
+  { label: "HTML5", icon: "🌐" },
+  { label: "CSS3", icon: "🎨" },
+  { label: "JavaScript", icon: "⚡" },
+  { label: "TypeScript", icon: "🔷" },
+  { label: "Node.js", icon: "🟢" },
+  { label: "React", icon: "⚛️" },
+  { label: "Python", icon: "🐍" },
+  { label: "PostgreSQL", icon: "🗄️" },
+  { label: "Docker", icon: "🐳" },
+  { label: "Git", icon: "🔀" },
+  { label: "Figma", icon: "✏️" },
+  { label: "REST APIs", icon: "🔗" },
+];
 
-/* ── CLOCKS — real-time, ticking every second ── */
-function z(n) {
-  return String(n).padStart(2, "0");
-}
-function fmtDate(d) {
-  const D = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  const M = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
-  return `${D[d.getDay()]}, ${d.getDate()} ${M[d.getMonth()]} ${d.getFullYear()}`;
-}
-
-// Show user's IANA timezone (e.g. "Asia/Kolkata")
-const userTZ = Intl.DateTimeFormat().resolvedOptions().timeZone || "Local Time";
-document.getElementById("local-tz").textContent = userTZ;
-
-function updateClocks() {
-  const now = new Date();
-
-  // Local clock — straightforward from the browser
-  document.getElementById("lc-h").textContent = z(now.getHours());
-  document.getElementById("lc-m").textContent = z(now.getMinutes());
-  document.getElementById("lc-s").textContent = z(now.getSeconds());
-  document.getElementById("local-date").textContent = fmtDate(now);
-
-  // Nepal clock — convert to UTC first, then add +5:45
-  const utcMs = now.getTime() + now.getTimezoneOffset() * 60000;
-  const nepalMs = utcMs + (5 * 60 + 45) * 60000;
-  const np = new Date(nepalMs);
-  document.getElementById("np-h").textContent = z(np.getHours());
-  document.getElementById("np-m").textContent = z(np.getMinutes());
-  document.getElementById("np-s").textContent = z(np.getSeconds());
-  document.getElementById("nepal-date").textContent = fmtDate(np);
-}
-updateClocks();
-setInterval(updateClocks, 1000); // tick every second
-
-/* ── HAMBURGER ── */
-const ham = document.getElementById("hamburger");
-const menu = document.getElementById("mobile-menu");
-
-ham.addEventListener("click", () => {
-  const open = menu.classList.toggle("open");
-  ham.classList.toggle("open", open);
-  document.body.style.overflow = open ? "hidden" : "";
-});
-document.querySelectorAll(".mob-link").forEach((a) => {
-  a.addEventListener("click", () => {
-    menu.classList.remove("open");
-    ham.classList.remove("open");
-    document.body.style.overflow = "";
-  });
-});
-
-/* ── SMOOTH SCROLL (all anchor links, offset for fixed nav) ── */
-document.querySelectorAll('a[href^="#"]').forEach((a) => {
-  a.addEventListener("click", (e) => {
-    const target = document.querySelector(a.getAttribute("href"));
-    if (!target) return;
-    e.preventDefault();
-    const navH = document.getElementById("navbar").offsetHeight;
-    window.scrollTo({
-      top: target.getBoundingClientRect().top + window.scrollY - navH,
-      behavior: "smooth",
-    });
-  });
-});
-
-/* ── GSAP HERO ── */
-const tl = gsap.timeline({ delay: 0.15 });
-tl.fromTo(
-  ".hero-eyebrow",
-  { y: 20, opacity: 0 },
-  { y: 0, opacity: 1, duration: 0.7, ease: "power2.out" },
-)
-  .fromTo(
-    ".hero-name",
-    { y: 40, opacity: 0, skewY: 2 },
-    { y: 0, opacity: 1, skewY: 0, duration: 0.85, ease: "power3.out" },
-    "-=0.4",
-  )
-  .fromTo(
-    ".hero-tagline",
-    { y: 20, opacity: 0 },
-    { y: 0, opacity: 1, duration: 0.7, ease: "power2.out" },
-    "-=0.5",
-  )
-  .fromTo(
-    ".hero-cta",
-    { y: 15, opacity: 0 },
-    { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" },
-    "-=0.4",
-  )
-  .fromTo(
-    ".hero-visual",
-    { x: 40, opacity: 0 },
-    { x: 0, opacity: 1, duration: 0.9, ease: "power3.out" },
-    "-=0.7",
-  )
-  .fromTo(
-    ".scroll-hint",
-    { x: -15, opacity: 0 },
-    { x: 0, opacity: 1, duration: 0.5 },
-    "-=0.2",
-  );
-
-gsap.to(".scroll-line", {
-  scaleX: 1.6,
-  repeat: -1,
-  yoyo: true,
-  duration: 1.4,
-  ease: "sine.inOut",
-  delay: 1.6,
-});
-
-gsap.fromTo(
-  ".clock-card",
-  { y: 30, opacity: 0 },
+const PROJECTS = [
   {
-    y: 0,
-    opacity: 1,
-    stagger: 0.15,
-    duration: 0.7,
-    ease: "back.out(1.5)",
-    scrollTrigger: { trigger: "#clocks", start: "top 85%", once: true },
+    title: "Horizon Dashboard",
+    desc: "A real-time analytics dashboard with live data visualisations, role-based access control, and a responsive layout.",
+    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop&auto=format",
+    tags: ["React", "Node.js", "WebSockets"],
   },
-);
-
-document.querySelectorAll("[data-reveal]").forEach((el) => {
-  gsap.fromTo(
-    el,
-    { y: 40, opacity: 0 },
-    {
-      y: 0,
-      opacity: 1,
-      duration: 0.8,
-      ease: "power3.out",
-      scrollTrigger: { trigger: el, start: "top 82%", once: true },
-    },
-  );
-});
-gsap.fromTo(
-  ".skill-chip",
-  { y: 16, opacity: 0 },
   {
-    y: 0,
-    opacity: 1,
-    stagger: 0.03,
-    duration: 0.35,
-    ease: "power2.out",
-    scrollTrigger: { trigger: ".skills-categories", start: "top 80%", once: true },
+    title: "Nomad API",
+    desc: "A RESTful travel data API aggregating flights, hotels, and local events with caching and rate limiting.",
+    img: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&h=400&fit=crop&auto=format",
+    tags: ["Python", "FastAPI", "PostgreSQL"],
   },
-);
-gsap.fromTo(
-  ".project-card",
-  { y: 24, opacity: 0 },
   {
-    y: 0,
-    opacity: 1,
-    stagger: 0.07,
-    duration: 0.5,
-    ease: "power2.out",
-    scrollTrigger: { trigger: ".projects-grid", start: "top 95%", once: true },
+    title: "Inkwell CMS",
+    desc: "A headless content management system with a markdown editor, media library, and webhook integrations.",
+    img: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&h=400&fit=crop&auto=format",
+    tags: ["TypeScript", "Next.js", "MongoDB"],
   },
-);
+  {
+    title: "Pulse Mobile",
+    desc: "A cross-platform fitness tracking app with GPS route mapping, workout history, and social sharing.",
+    img: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop&auto=format",
+    tags: ["React Native", "GraphQL", "Firebase"],
+  },
+];
 
-/* ── BACK TO TOP ── */
-const backTop = document.getElementById("back-top");
-let backTicking = false;
-window.addEventListener("scroll", () => {
-  if (backTicking) return;
-  backTicking = true;
-  requestAnimationFrame(() => {
-    backTop.classList.toggle("visible", window.scrollY > 400);
-    backTicking = false;
-  });
-});
-backTop.addEventListener("click", () =>
-  window.scrollTo({ top: 0, behavior: "smooth" }),
-);
+// ─── Theme ───────────────────────────────────────────────────────────────────
+// 6am–5:59pm = light  |  6pm–5:59am = dark
+// Initial theme is set synchronously in <head> to prevent flash.
+// Here we just keep it in sync every minute.
 
-/* ── CONTACT FORM ── */
-function setErr(inputId, errId, show) {
-  document.getElementById(inputId).classList.toggle("err", show);
-  document.getElementById(errId).classList.toggle("show", show);
-}
-// live-clear errors as user types
-[
-  ["fname", "err-fname"],
-  ["cemail", "err-email"],
-  ["message", "err-message"],
-].forEach(([inp, err]) => {
-  document.getElementById(inp).addEventListener("input", () => {
-    document.getElementById(inp).classList.remove("err");
-    document.getElementById(err).classList.remove("show");
-    // also hide global status
-    const s = document.getElementById("form-status");
-    s.className = "";
-    s.style.display = "none";
-  });
-});
+const applyTheme = () => {
+  const hour = new Date().getHours();
+  const theme = hour >= 6 && hour < 18 ? "light" : "dark";
+  document.documentElement.setAttribute("data-theme", theme);
+  const badge = document.getElementById("theme-badge");
+  if (badge)
+    badge.title = theme === "light" ? "Light mode (day)" : "Dark mode (night)";
+};
 
-document.getElementById("send-btn").addEventListener("click", async () => {
-  const fname = document.getElementById("fname").value.trim();
-  const email = document.getElementById("cemail").value.trim();
-  const message = document.getElementById("message").value.trim();
-  const emailRx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const status = document.getElementById("form-status");
-  const btn = document.getElementById("send-btn");
+applyTheme();
+setInterval(applyTheme, 60_000);
 
-  // clear
-  status.className = "";
-  status.style.display = "none";
+// ─── Clocks ──────────────────────────────────────────────────────────────────
 
-  // per-field validation
-  let ok = true;
-  setErr("fname", "err-fname", !fname);
-  if (!fname) ok = false;
-  setErr("cemail", "err-email", !email || !emailRx.test(email));
-  if (!email || !emailRx.test(email)) ok = false;
-  setErr("message", "err-message", !message);
-  if (!message) ok = false;
-  if (!ok) return;
+const pad = (n) => String(n).padStart(2, "0");
 
-  btn.textContent = "Sending…";
-  btn.disabled = true;
+const getNPT = () => {
+  const utcMs = Date.now() + new Date().getTimezoneOffset() * 60000;
+  const npt = new Date(utcMs + 345 * 60000); // UTC+5:45
+  return `${pad(npt.getHours())}:${pad(npt.getMinutes())}:${pad(npt.getSeconds())}`;
+};
 
-  try {
-    await emailjs.sendForm(
-      EJ_SERVICE_ID,
-      EJ_TEMPLATE_ID,
-      document.getElementById("contact-form"),
-    );
-    status.className = "success";
-    status.textContent =
-      "✓ Message sent! I'll get back to you within 24 hours. Thank you!";
-    status.style.display = "block";
-    document.getElementById("contact-form").reset();
-    gsap.fromTo(
-      status,
-      { y: 8, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.4 },
-    );
-  } catch (err) {
-    status.className = "error";
-    status.textContent =
-      "✗ Something went wrong. Please email me directly at krish.maharjan@gmail.com";
-    status.style.display = "block";
-    console.error("EmailJS error:", err);
-  } finally {
-    btn.textContent = "Send Message →";
-    btn.disabled = false;
+const getLocal = () => {
+  const d = new Date();
+  return `${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+};
+
+const tickClocks = () => {
+  const nptEl = document.getElementById("npt-time");
+  const localEl = document.getElementById("local-time");
+  if (nptEl) nptEl.textContent = getNPT();
+  if (localEl) localEl.textContent = getLocal();
+};
+
+tickClocks();
+setInterval(tickClocks, 1000);
+
+// ─── DOM Ready ───────────────────────────────────────────────────────────────
+
+document.addEventListener("DOMContentLoaded", () => {
+  // EmailJS
+  if (typeof emailjs !== "undefined") emailjs.init("jaEu-NvWgmhTrCtnP");
+
+  // Render skills
+  const skillsGrid = document.getElementById("skills-grid");
+  if (skillsGrid) {
+    skillsGrid.innerHTML = SKILLS.map(
+      (s) =>
+        `<div class="skill-badge" data-gsap>
+        <span class="skill-badge__icon" aria-hidden="true">${s.icon}</span>
+        <span>${s.label}</span>
+      </div>`,
+    ).join("");
   }
-});
 
-/* ── NAV ACTIVE HIGHLIGHT — throttled ── */
-const allSecs = document.querySelectorAll("section[id]");
-const navAs = document.querySelectorAll(".nav-links a");
-let scrollTicking = false;
-window.addEventListener("scroll", () => {
-  if (scrollTicking) return;
-  scrollTicking = true;
-  requestAnimationFrame(() => {
-    let cur = "";
-    allSecs.forEach((s) => {
-      if (window.scrollY >= s.offsetTop - 140) cur = s.id;
+  // Render project cards
+  const worksGrid = document.getElementById("works-grid");
+  if (worksGrid) {
+    worksGrid.innerHTML = PROJECTS.map(
+      (p) =>
+        `<article class="work-card" data-gsap>
+        <img src="${p.img}" alt="${p.title}" class="work-card__img" loading="lazy" width="600" height="400">
+        <div class="work-card__body">
+          <h3 class="work-card__title">${p.title}</h3>
+          <p class="work-card__desc">${p.desc}</p>
+          <div class="work-card__tags">${p.tags.map((t) => `<span class="work-card__tag">${t}</span>`).join("")}</div>
+          <a href="#" class="work-card__link">View Project</a>
+        </div>
+      </article>`,
+    ).join("");
+  }
+
+  // Nav — hamburger toggle
+  const hamburger = document.getElementById("hamburger");
+  const header = document.getElementById("site-header");
+  const mobileList = document.getElementById("nav-mobile-list");
+
+  hamburger?.addEventListener("click", () => {
+    const open = header.classList.toggle("nav--open");
+    hamburger.setAttribute("aria-expanded", open);
+    mobileList?.setAttribute("aria-hidden", !open);
+  });
+
+  document.querySelectorAll(".nav__mobile-link").forEach((link) => {
+    link.addEventListener("click", () => {
+      header.classList.remove("nav--open");
+      hamburger?.setAttribute("aria-expanded", "false");
+      mobileList?.setAttribute("aria-hidden", "true");
     });
-    navAs.forEach((a) => {
-      a.style.color = a.getAttribute("href") === `#${cur}` ? "var(--accent)" : "";
+  });
+
+  // Back to top
+  const backBtn = document.getElementById("back-to-top");
+  if (backBtn) {
+    window.addEventListener(
+      "scroll",
+      () => {
+        backBtn.classList.toggle("back-to-top--visible", window.scrollY > 300);
+      },
+      { passive: true },
+    );
+    backBtn.addEventListener("click", () =>
+      window.scrollTo({ top: 0, behavior: "smooth" }),
+    );
+  }
+
+  // GSAP animations
+  if (typeof gsap !== "undefined") {
+    if (typeof ScrollTrigger !== "undefined")
+      gsap.registerPlugin(ScrollTrigger);
+
+    // Hero entrance
+    gsap
+      .timeline({ defaults: { ease: "power3.out" } })
+      .from(".hero__top", { opacity: 0, y: -20, duration: 0.5 })
+      .from(".hero__greeting", { opacity: 0, y: 30, duration: 0.6 }, "-=0.2")
+      .from(".hero__name", { opacity: 0, y: 50, duration: 0.9 }, "-=0.4")
+      .from(".hero__tagline", { opacity: 0, y: 20, duration: 0.6 }, "-=0.4")
+      .from(".hero__cta-group", { opacity: 0, y: 20, duration: 0.5 }, "-=0.3")
+      .from("#clock-widget", { opacity: 0, y: 20, duration: 0.6 }, "-=0.4")
+      .from(".hero__scroll-hint", { opacity: 0, duration: 0.5 }, "-=0.2")
+      .from(".hero__bg-text", { opacity: 0, duration: 1.0 }, "-=0.8");
+
+    // Scroll reveals
+    if (typeof ScrollTrigger !== "undefined") {
+      const reveal = (target, vars) =>
+        gsap.from(target, {
+          ...vars,
+          scrollTrigger: { trigger: target, start: "top 80%" },
+        });
+
+      reveal(".skill-badge", {
+        opacity: 0,
+        y: 24,
+        duration: 0.5,
+        stagger: 0.08,
+        ease: "power3.out",
+      });
+      reveal(".work-card", {
+        opacity: 0,
+        y: 20,
+        duration: 0.5,
+        stagger: 0.06,
+        ease: "power3.out",
+      });
+      reveal(".resume__sidebar", {
+        opacity: 0,
+        x: -40,
+        duration: 0.7,
+        ease: "power3.out",
+      });
+      reveal(".resume__main", {
+        opacity: 0,
+        x: 40,
+        duration: 0.7,
+        ease: "power3.out",
+      });
+      reveal(".contact__info", {
+        opacity: 0,
+        x: -30,
+        duration: 0.6,
+        ease: "power3.out",
+      });
+      reveal(".contact__form", {
+        opacity: 0,
+        x: 30,
+        duration: 0.6,
+        ease: "power3.out",
+      });
+    }
+  } else {
+    // Graceful degradation if GSAP fails to load
+    document.querySelectorAll("[data-gsap]").forEach((el) => {
+      el.style.opacity = "1";
+      el.style.transform = "none";
     });
-    scrollTicking = false;
+  }
+
+  // Contact form
+  const form = document.getElementById("contact-form");
+  if (!form) return;
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById("form-name");
+    const email = document.getElementById("form-email");
+    const message = document.getElementById("form-message");
+    const btn = document.getElementById("form-submit");
+    const status = document.getElementById("form-status");
+
+    // Clear errors
+    ["error-name", "error-email", "error-message"].forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = "";
+    });
+    status.textContent = "";
+    status.className = "form__status";
+
+    // Validate
+    let valid = true;
+    if (!name.value.trim()) {
+      document.getElementById("error-name").textContent = "Name is required.";
+      valid = false;
+    }
+    if (!email.value.trim()) {
+      document.getElementById("error-email").textContent = "Email is required.";
+      valid = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) {
+      document.getElementById("error-email").textContent =
+        "Enter a valid email.";
+      valid = false;
+    }
+    if (!message.value.trim()) {
+      document.getElementById("error-message").textContent =
+        "Message is required.";
+      valid = false;
+    }
+    if (!valid) return;
+
+    btn.disabled = true;
+    btn.textContent = "Sending…";
+
+    if (typeof emailjs === "undefined") {
+      status.textContent = "Email service unavailable. Please email directly.";
+      status.className = "form__status form__status--error";
+      btn.disabled = false;
+      btn.textContent = "Send Message";
+      return;
+    }
+
+    try {
+      await emailjs.send("service_b8b900o", "template_pny925g", {
+        from_name: name.value,
+        from_email: email.value,
+        message: message.value,
+      });
+      status.textContent = "Message sent! I'll get back to you soon.";
+      status.className = "form__status form__status--success";
+      form.reset();
+    } catch {
+      status.textContent =
+        "Something went wrong. Please try again or email directly.";
+      status.className = "form__status form__status--error";
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "Send Message";
+    }
   });
 });
