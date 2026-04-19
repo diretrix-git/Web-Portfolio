@@ -19,28 +19,22 @@ const SKILLS = [
 
 const PROJECTS = [
   {
-    title: "Horizon Dashboard",
-    desc: "A real-time analytics dashboard with live data visualisations, role-based access control, and a responsive layout.",
-    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop&auto=format",
-    tags: ["React", "Node.js", "WebSockets"],
+    title: 'E-Commerce Store',
+    desc: 'A fully functional online store with product listings, a shopping cart, checkout flow, and order management.',
+    img: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop&auto=format',
+    tags: ['HTML', 'CSS', 'JavaScript'],
   },
   {
-    title: "Nomad API",
-    desc: "A RESTful travel data API aggregating flights, hotels, and local events with caching and rate limiting.",
-    img: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&h=400&fit=crop&auto=format",
-    tags: ["Python", "FastAPI", "PostgreSQL"],
+    title: 'Calculator',
+    desc: 'A clean, responsive calculator supporting basic arithmetic, keyboard input, and a history log of recent calculations.',
+    img: 'https://images.unsplash.com/photo-1587145820266-a5951ee6f620?w=600&h=400&fit=crop&auto=format',
+    tags: ['HTML', 'CSS', 'JavaScript'],
   },
   {
-    title: "Inkwell CMS",
-    desc: "A headless content management system with a markdown editor, media library, and webhook integrations.",
-    img: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&h=400&fit=crop&auto=format",
-    tags: ["TypeScript", "Next.js", "MongoDB"],
-  },
-  {
-    title: "Pulse Mobile",
-    desc: "A cross-platform fitness tracking app with GPS route mapping, workout history, and social sharing.",
-    img: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop&auto=format",
-    tags: ["React Native", "GraphQL", "Firebase"],
+    title: 'To-Do List',
+    desc: 'A task management app with add, edit, delete, and complete features — with local storage so tasks persist on refresh.',
+    img: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=600&h=400&fit=crop&auto=format',
+    tags: ['HTML', 'CSS', 'JavaScript'],
   },
 ];
 
